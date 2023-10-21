@@ -2,6 +2,8 @@ module com.adept.application {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.jsoup;
+    requires java.logging;
+
 
 
     opens com.adept.application to javafx.fxml;
