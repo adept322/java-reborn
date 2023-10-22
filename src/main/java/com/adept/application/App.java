@@ -1,5 +1,6 @@
 package com.adept.application;
 
+import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -16,14 +17,14 @@ import java.util.logging.Logger;
  * @author Adept
  */
 
-public class Application extends javafx.application.Application {
+public class App extends Application {
 
     /**
      *  Logger by java.util.logging (JUL)
      *  Temporarily replacement of SLF4J logger
      */
 
-    private static final Logger logger = Logger.getLogger(Application.class.getName());
+    private static final Logger logger = Logger.getLogger(App.class.getName());
 
     /**
      *  Method from which the program execution starts
@@ -32,7 +33,7 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("main-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Simple parser");
         stage.setScene(scene);
