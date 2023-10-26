@@ -24,18 +24,18 @@ public class JsoupConnector {
 
     /**
      *  Method that gets the link and parses its contents
-     * @param url the link to the page
+     * @param www the link to the page
      * @return html contents of document
      */
 
-    public static String getDocument(String url) {
+    public static String getDocumentToString(String www) {
         Document page = null;
         try {
-            page = Jsoup.connect(url).get();
-            logger.log(Level.INFO, "Parse complete successful");
+            logger.log(Level.INFO, "Successful: parse document");
+            page = Jsoup.connect(www).get();
             return page.toString();
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Parse error");
+            logger.log(Level.SEVERE, "Error: invalid document");
             return "error";
         }
     }

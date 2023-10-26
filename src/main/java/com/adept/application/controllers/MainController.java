@@ -5,6 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,13 +43,26 @@ public class MainController {
     private TextField searchField;
 
     /**
-     *  Method that handles button actions
+     *  Methods that handles button actions
      */
 
     @FXML
     protected void onSearchButtonClick() {
-        logger.log(Level.INFO, "Button clicked");
+        logger.log(Level.INFO, "Successful: search button clicked");
         String www = searchField.getText();
-        textArea.setText(JsoupConnector.getDocument(www));
+        textArea.setText(JsoupConnector.getDocumentToString(www));
+    }
+
+    @FXML
+    protected void onMenuHelpButtonClick() {
+        logger.log(Level.INFO, "Successful: help menu button clicked");
+        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+            try {
+                logger.log(Level.INFO, "Successful: open help in browser");
+                Desktop.getDesktop().browse(new URI("https://github.com/adept322/simple-parser"));
+            } catch (IOException | URISyntaxException e) {
+                logger.log(Level.SEVERE, "Error");
+            }
+        }
     }
 }
